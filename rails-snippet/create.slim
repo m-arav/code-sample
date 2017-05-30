@@ -1,0 +1,72 @@
+.container
+  h3.center-align Studio Details
+  .row
+    .col.s12.offset-s3
+        = form_for :onboarding_form do |form|
+         = hidden_field_tag :authenticity_token, form_authenticity_token
+         .row
+           .input-field.col.s6
+             = form.text_field :name, class: "validate"
+             label for="name"Studio name
+         .row
+           .file-field.input-field.col.s6
+             .btn
+              span Logo
+              = form.file_field :logo, accept: 'image/png,image/gif,image/jpeg'
+             .file-path-wrapper
+              input.file-path.validate type="text" placeholder="Upload studio logo"
+         .row
+           .input-field.col.s6
+             = form.text_field :tag_line, class: "validate"
+             label for="tag_line" Tag Line
+         .row
+           .input-field.col.s6
+             = form.text_area :welcome_message, class: "validate materialize-textarea"
+             label for="welcome_message" Welcome message
+         .row
+           .input-field.col.s6
+             p Mission
+             = form.fields_for :mission do |field|
+              = field.text_field :header, class: "validate", placeholder: "Header"
+              = field.text_area :message, class: "validate materialize-textarea", placeholder: "Message"
+         .row
+           .input-field.col.s6
+             p Yoga Styles
+             = form.text_field "yoga_styles[1][name]", placeholder: 'Yoga style 1'
+             = form.text_field "yoga_styles[1][description]", placeholder: 'Yoga style description 1'
+             = form.text_field "yoga_styles[2][name]", placeholder: 'Yoga style 2'
+             = form.text_field "yoga_styles[2][description]", placeholder: 'Yoga style description 2'
+             = form.text_field "yoga_styles[3][name]", placeholder: 'Yoga style 3'
+             = form.text_field "yoga_styles[3][description]", placeholder: 'Yoga style description 3'
+             = form.text_field "yoga_styles[4][name]", placeholder: 'Yoga style 4'
+             = form.text_field "yoga_styles[4][description]", placeholder: 'Yoga style description 4'
+         .row
+           .input-field.col.s6
+             p Senior Teachers
+             = form.text_field "senior_teachers[1][name]", placeholder: 'Name'
+             = form.text_field "senior_teachers[1][position]", placeholder: 'Position at studio'
+             = form.text_field "senior_teachers[1][contact_number]", placeholder: 'Contact number'
+             .file-field.input-field
+               .btn
+                span Photo
+                = form.file_field "senior_teachers[1][photo]", accept: 'image/png,image/gif,image/jpeg'
+               .file-path-wrapper
+                input.file-path.validate type="text" placeholder="Upload teacher's photo"
+             = form.text_field "senior_teachers[2][name]", placeholder: 'Name'
+             = form.text_field "senior_teachers[2][position]", placeholder: 'Position at studio'
+             = form.text_field "senior_teachers[2][contact_number]", placeholder: 'Contact number'
+             .file-field.input-field
+               .btn
+                span Photo
+                = form.file_field "senior_teachers[2][photo]", accept: 'image/png,image/gif,image/jpeg'
+               .file-path-wrapper
+                input.file-path.validate type="text" placeholder="Upload teacher's photo"
+         .row
+           .file-field.input-field.col.s6
+             p Pictures of yoga shala
+             .btn
+              span Slides
+              = form.file_field :slides, multiple: true, accept: 'image/png,image/gif,image/jpeg'
+             .file-path-wrapper
+              input.file-path.validate type="text" placeholder="Upload one or more Studio Images"
+         input.btn.waves-effect.waves-light type="submit" value="Submit"
